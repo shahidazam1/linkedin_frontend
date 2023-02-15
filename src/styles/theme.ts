@@ -3,20 +3,20 @@ import { createTheme, ThemeOptions } from "@mui/material/styles";
 export const theme: ThemeOptions = createTheme({
   palette: {
     primary: {
-      main: "#182F53",
-      light: "rgb(24, 47, 83, 0.1)",
-      dark: "rgb(24, 47, 83, 0.8)",
+      main: "#2977C9",
+      light: "rgba(41, 119, 201, 1)",
+      dark: "rgba(41, 119, 201,0.8)",
     },
-    warning: {
-      main: "#FF4F3D",
-      light: "rgb(247, 50, 30, 0.1)",
-      dark: "rgb(247, 50, 30, 1)",
+    secondary: {
+      main: "#717171",
+      light: "rgba(113, 113, 113, 1)",
+      dark: "rgba(113, 113, 113,0.8)",
     },
-    info: {
-      main: "#F2F2F2",
-      light: "rgb(242, 242, 242, 0.1)",
-      dark: "rgb(242, 242, 242, 1)",
-    },
+    // info: {
+    //   main: "#F2F2F2",
+    //   light: "rgb(242, 242, 242, 0.1)",
+    //   dark: "rgb(242, 242, 242, 1)",
+    // },
     background: {
       default: "#ffffff",
     },
@@ -33,24 +33,18 @@ export const theme: ThemeOptions = createTheme({
       styleOverrides: {
         root: {
           textTransform: "capitalize",
-          fontFamily: "poppins_medium",
-          fontSize: "13px",
-          borderRadius: "5px",
+          fontFamily: "Source Sans Pro",
+          fontSize: "16px",
+          borderRadius: "20px",
+          paddingX: "10px",
         },
       },
     },
     MuiTextField: {
       styleOverrides: {
         root: {
-          fontFamily: "poppins_regular",
+          fontFamily: "Source Sans Pro",
           color: "#2B2D22",
-          [`& fieldset`]: {
-            borderRadius: 5,
-          },
-          // ["& input::placeholder"]: {
-          //   // color: "#2B2D22",
-          //   fontSize: "12px",
-          // },
         },
       },
     },

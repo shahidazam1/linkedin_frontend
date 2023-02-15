@@ -4,7 +4,6 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
-  background-color: #f6f6f6;
 }
 
 * {
@@ -19,7 +18,7 @@ body {
 
 /* MENTIONS */
 .mentions_input {
-  font-family: poppins_regular !important;
+  font-family: Source Sans Pro !important;
 }
 
 .mentions_input__highlighter {

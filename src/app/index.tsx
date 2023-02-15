@@ -1,20 +1,20 @@
-import { Box, Typography } from "@mui/material";
+import RoutesContainer from "./RoutesContainer";
+import { QueryClient, QueryClientProvider } from "react-query";
+import "./App.css";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => {
   return (
-    <Box>
-      <Typography variant="h1">Hello From Shahid</Typography>
-      <Typography variant="h2">Hello From Shahid</Typography>
-      <Typography variant="h3">Hello From Shahid</Typography>
-      <Typography variant="h4">Hello From Shahid</Typography>
-      <Typography variant="h5">Hello From Shahid</Typography>
-      <Typography variant="h6">Hello From Shahid</Typography>
-      <Typography variant="subtitle1">Hello From Shahid</Typography>
-      <Typography variant="subtitle2">Hello From Shahid</Typography>
-      <Typography variant="body1">Hello From Shahid</Typography>
-      <Typography variant="body2">Hello From Shahid</Typography>
-      <Typography variant="caption">Hello From Shahid</Typography>
-    </Box>
+    <QueryClientProvider client={queryClient}>
+      <RoutesContainer />
+    </QueryClientProvider>
   );
 };
 
