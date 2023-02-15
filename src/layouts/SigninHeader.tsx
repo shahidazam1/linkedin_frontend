@@ -1,7 +1,10 @@
-import { Box, Button, Typography } from "@mui/material";
-import { logo } from "assets";
+import { Box, Button } from "@mui/material";
+import { LogoText } from "components/BasicComponent";
+import { useNavigate } from "react-router-dom";
 
 const SigninHeader = () => {
+  const navigate = useNavigate();
+
   return (
     <Box
       p={3}
@@ -15,18 +18,15 @@ const SigninHeader = () => {
       }}
     >
       <Box display="flex" justifyContent="space-between" alignItems="center">
+        <LogoText />
         <Box display="flex">
-          <Typography variant="h3" sx={{ color: "#0A66C2" }}>
-            Linked
-          </Typography>
-          <Box pl={0.1}>
-            <img src={logo} alt="Linked" width={36} />
-          </Box>
-        </Box>
-        <Box display="flex">
-          <Button color="secondary">Join Now</Button>
+          <Button color="secondary" onClick={() => navigate("/signup")}>
+            Join Now
+          </Button>
           <Box ml={2}>
-            <Button variant="contained">Sign in</Button>
+            <Button variant="contained" onClick={() => navigate("/signin")}>
+              Sign in
+            </Button>
           </Box>
         </Box>
       </Box>

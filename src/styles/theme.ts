@@ -44,30 +44,27 @@ export const theme: ThemeOptions = createTheme({
       styleOverrides: {
         root: {
           fontFamily: "Source Sans Pro",
-          color: "#2B2D22",
         },
       },
     },
     MuiSelect: {
       styleOverrides: {
         outlined: {
-          fontFamily: "poppins_regular",
-          color: "#2B2D22",
+          fontFamily: "Source Sans Pro",
         },
       },
     },
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          fontFamily: "poppins_regular",
+          fontFamily: "Source Sans Pro",
+          fontWeight: 400,
           color: "#2B2D22",
-          opacity: "70%",
-          fontSize: "12px",
+          fontSize: "15px",
         },
         shrink: ({ ownerState }) => ({
           ...(ownerState.shrink && {
-            fontSize: "0.9rem !important",
-            // top: "-1 !important",
+            fontSize: "1rem !important",
           }),
         }),
       },
@@ -75,7 +72,7 @@ export const theme: ThemeOptions = createTheme({
     MuiInputBase: {
       styleOverrides: {
         formControl: {
-          fontFamily: "poppins_regular",
+          fontFamily: "Source Sans Pro",
           color: "#2B2D22",
         },
       },
@@ -83,7 +80,7 @@ export const theme: ThemeOptions = createTheme({
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          fontFamily: "poppins_regular",
+          fontFamily: "Source Sans Pro",
           color: "#2B2D22",
           fontSize: "13px",
         },
@@ -114,7 +111,7 @@ export const theme: ThemeOptions = createTheme({
     MuiFormLabel: {
       styleOverrides: {
         root: {
-          fontFamily: "poppins_regular",
+          fontFamily: "Source Sans Pro",
           color: "#2B2D22",
           fontSize: "11px",
         },
@@ -123,11 +120,11 @@ export const theme: ThemeOptions = createTheme({
     MuiAutocomplete: {
       styleOverrides: {
         root: {
-          fontFamily: "poppins_regular",
+          fontFamily: "Source Sans Pro",
           color: "#2B2D22",
         },
         option: {
-          fontFamily: "poppins_regular",
+          fontFamily: "Source Sans Pro",
           color: "#2B2D22",
           fontSize: "12px",
         },

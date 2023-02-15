@@ -1,15 +1,11 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { linkedin_signin } from "assets";
+import OrComponent from "components/BasicComponent";
 import SigninHeader from "layouts/SigninHeader";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
+  const navigate = useNavigate();
   return (
     <Box p={3} maxWidth={1500} margin="auto">
       <SigninHeader />
@@ -21,46 +17,31 @@ const Signin = () => {
             </Typography>
             <Box sx={{ maxWidth: "500px", mt: 3 }}>
               <Box>
-                <TextField
-                  fullWidth
-                  id="filled-error"
-                  label="Email or Phone"
-                  variant="filled"
-                />
+                <TextField fullWidth id="filled-error" label="Email or Phone" />
               </Box>
               <Box mt={3}>
-                <TextField
-                  fullWidth
-                  id="filled-error"
-                  label="Password"
-                  variant="filled"
-                />
+                <TextField fullWidth id="filled-error" label="Password" />
               </Box>
               <Box mt={3}>
                 <Button>Forgot Password</Button>
               </Box>
               <Box mt={3}>
-                <Button fullWidth variant="contained">
+                <Button
+                  fullWidth
+                  variant="contained"
+                  onClick={() => navigate("/feed")}
+                >
                   Sign in
                 </Button>
               </Box>
+              <OrComponent />
               <Box mt={3}>
-                <Grid container spacing={2} display="flex" alignItems="center">
-                  <Grid item xs={5.5}>
-                    <Divider />
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography p={1} variant="body1">
-                      or
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={5.5}>
-                    <Divider />
-                  </Grid>
-                </Grid>
-              </Box>
-              <Box mt={3}>
-                <Button fullWidth variant="outlined">
+                <Button
+                  fullWidth
+                  variant="outlined"
+                  color="secondary"
+                  onClick={() => navigate("/signup")}
+                >
                   New to LinkedIn? Join now
                 </Button>
               </Box>

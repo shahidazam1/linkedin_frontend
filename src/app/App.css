@@ -17,7 +17,7 @@ body {
 }
 
 /* MENTIONS */
-.mentions_input {
+/* .mentions_input {
   font-family: Source Sans Pro !important;
 }
 
@@ -55,4 +55,4 @@ body {
 
 .mentions_input__suggestions__item--focused {
   background-color: rgba(0, 0, 0, 0.1);
-}
+} */
