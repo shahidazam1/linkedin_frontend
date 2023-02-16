@@ -1,5 +1,6 @@
-import { Box, Divider, Grid, Typography } from "@mui/material";
+import { Box, Divider, Grid, IconButton, Typography } from "@mui/material";
 import { logo } from "assets";
+import { useNavigate } from "react-router-dom";
 
 const OrComponent = () => {
   return (
@@ -32,6 +33,36 @@ export const LogoText = () => {
       <Box pl={0.1}>
         <img src={logo} alt="Linked" width={36} />
       </Box>
+    </Box>
+  );
+};
+
+export const HeaderIcons = ({ icon, name, isActive, path }: any) => {
+  const navigate = useNavigate();
+  return (
+    <Box
+      sx={{
+        ml: 4,
+        borderBottom: isActive ? "3px solid blue" : "none",
+        "@media (max-width: 650px)": {
+          ml: 2,
+          borderBottom: "none",
+        },
+      }}
+      textAlign="center"
+      onClick={() => navigate(`${path}`)}
+    >
+      <IconButton color={isActive ? "primary" : "default"}>{icon}</IconButton>
+      <Typography
+        sx={{
+          "@media (max-width: 650px)": {
+            display: "none",
+          },
+        }}
+        variant="body2"
+      >
+        {name}
+      </Typography>
     </Box>
   );
 };
