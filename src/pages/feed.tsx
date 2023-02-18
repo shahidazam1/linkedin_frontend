@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 
 const Feed = () => {
-  return <Box mt={45}>feed</Box>;
+  return <Box>feed</Box>;
 };
 
 export default Feed;

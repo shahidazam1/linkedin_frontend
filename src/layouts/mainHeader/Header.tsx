@@ -1,24 +1,15 @@
-import { Box } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 import { logo } from "assets";
 import { HeaderIcons } from "components/BasicComponent";
 import { useLocation } from "react-router-dom";
+import { StyledAvatar, StyledHeader } from "styles";
 import { headerIconData } from "utils";
 
 const Header = () => {
   const location = useLocation();
 
   return (
-    <Box
-      p={2}
-      sx={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        zIndex: 12,
-        background: "#FFFFFF",
-        width: "100%",
-      }}
-    >
+    <StyledHeader>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Box>
           <img src={logo} alt="" width={30} />
@@ -33,9 +24,17 @@ const Header = () => {
               isActive={location.pathname.includes(item.path)}
             />
           ))}
+          <StyledAvatar>
+            <Avatar
+              alt="shahid Azam"
+              src="/static/images/avatar/1.jpg"
+              sx={{ width: 40, heignt: 35 }}
+            />
+            <Typography variant="body2">Me</Typography>
+          </StyledAvatar>
         </Box>
       </Box>
-    </Box>
+    </StyledHeader>
   );
 };
 
