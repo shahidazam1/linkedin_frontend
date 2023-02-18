@@ -14,7 +14,7 @@ const Header = () => {
     <StyledHeader>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Box>
-          <img src={logo} alt="" width={30} />
+          <img src={logo} alt="" width={45} />
         </Box>
         <Box display="flex" alignItems="center">
           {headerIconData?.map((item, index) => (

@@ -1,4 +1,7 @@
 import { Box, Grid } from "@mui/material";
+import { getProfile } from "api/services/profile";
+import Loader from "components/Loader";
+import { useQuery } from "react-query";
 import { StyledCardWraper } from "styles";
 import About from "views/profile/About";
 import Analytics from "views/profile/Analytics";
@@ -8,12 +11,16 @@ import HeadlineDetails from "views/profile/HeadlineDetails";
 import Skills from "views/profile/Skills";
 
 const Profile = () => {
+  const { data, isLoading } = useQuery("profile", getProfile);
+  console.log(data);
+
+  if (isLoading) return <Loader />;
   return (
     <Box>
       <Grid container spacing={2}>
         <Grid item xs={0} sm={0} md={2}></Grid>
         <Grid item xs={12} sm={9} md={7}>
-          <HeadlineDetails />
+          <HeadlineDetails profileData={data?.data[0]} />
           <Analytics />
           <About />
           <Experience />

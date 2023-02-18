@@ -1,6 +1,7 @@
 import { Box, Divider, Grid, IconButton, Typography } from "@mui/material";
 import { logo } from "assets";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { StyledFlexCenterAll } from "styles";
 import { JsxElement } from "typescript";
 
@@ -112,4 +113,12 @@ export const LikeCommentCard = ({ icon, title }: liceCommentType) => {
       </StyledFlexCenterAll>
     </Grid>
   );
+};
+
+export const handleError = (err: any) => {
+  if (Array.isArray(err?.response?.data?.message)) {
+    toast.error(err?.response?.data?.message[0]);
+  } else {
+    toast.error(err?.response?.data?.message);
+  }
 };

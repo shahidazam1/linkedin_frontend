@@ -24,7 +24,7 @@ http.interceptors.response.use(
       err.response.config.method === "get"
     ) {
       localStorage.clear();
-      window.location.href = "/login";
+      window.location.href = "/signin";
     }
     return Promise.reject(err);
   }
