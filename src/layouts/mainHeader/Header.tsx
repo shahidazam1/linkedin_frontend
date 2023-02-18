@@ -1,12 +1,14 @@
-import { Avatar, Box, Typography } from "@mui/material";
+import { Box, Button, Divider, Typography } from "@mui/material";
 import { logo } from "assets";
-import { HeaderIcons } from "components/BasicComponent";
-import { useLocation } from "react-router-dom";
+import Avatar from "components/Avatar";
+import { HeaderIcons } from "components/BasicComponents";
+import { useLocation, useNavigate } from "react-router-dom";
 import { StyledAvatar, StyledHeader } from "styles";
 import { headerIconData } from "utils";
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <StyledHeader>
@@ -25,12 +27,29 @@ const Header = () => {
             />
           ))}
           <StyledAvatar>
-            <Avatar
-              alt="shahid Azam"
-              src="/static/images/avatar/1.jpg"
-              sx={{ width: 40, heignt: 35 }}
-            />
-            <Typography variant="body2">Me</Typography>
+            <Avatar name="shahid azam" image="/static/images/avatar/1.jpg">
+              <Box p={2}>
+                <Typography variant="subtitle2">Shahid azam</Typography>
+                <Typography mt={1} variant="body2">
+                  web Developer
+                </Typography>
+                <Button
+                  sx={{ mt: 2 }}
+                  variant="outlined"
+                  color="primary"
+                  size="small"
+                  onClick={() => navigate("/profile")}
+                >
+                  View Profile
+                </Button>
+              </Box>
+              <Divider />
+              <Box p={2}>
+                <Button color="secondary" onClick={() => navigate("/signin")}>
+                  Log out
+                </Button>
+              </Box>
+            </Avatar>
           </StyledAvatar>
         </Box>
       </Box>

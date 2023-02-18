@@ -15,8 +15,21 @@ export const StyledAvatar = styled(Box)(() => ({
   marginLeft: 30,
   textAlign: "center",
 }));
-export const StyledHeader2 = styled(Box)(() => ({}));
-export const StyledHeader3 = styled(Box)(() => ({}));
+
+export const StyledCardWraper = styled(Box)(() => ({
+  backgroundColor: "white",
+  borderRadius: "10px",
+  border: "1px solid #DCDCDC	",
+  padding: 20,
+  marginTop: 20,
+}));
+
+export const StyledFlex = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+}));
+
 export const StyledHeader4 = styled(Box)(() => ({}));
 export const StyledHeader5 = styled(Box)(() => ({}));
 export const StyledHeader6 = styled(Box)(() => ({}));

@@ -8,7 +8,7 @@ const MainHeader = () => {
       <Box>
         <Header />
       </Box>
-      <Box mt={13}>
+      <Box pt={13}>
         <Outlet />
       </Box>
     </Box>

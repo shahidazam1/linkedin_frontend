@@ -1,6 +1,6 @@
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { linkedin_signin } from "assets";
-import OrComponent from "components/BasicComponent";
+import OrComponent from "components/BasicComponents";
 import SigninHeader from "layouts/SigninHeader";
 import { useNavigate } from "react-router-dom";
 

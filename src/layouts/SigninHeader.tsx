@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material";
-import { LogoText } from "components/BasicComponent";
+import { LogoText } from "components/BasicComponents";
 import { useNavigate } from "react-router-dom";
 
 const SigninHeader = () => {

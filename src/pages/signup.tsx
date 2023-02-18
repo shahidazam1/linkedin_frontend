@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import OrComponent, { LogoText } from "components/BasicComponent";
+import OrComponent, { LogoText } from "components/BasicComponents";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {

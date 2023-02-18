@@ -2,6 +2,13 @@ import { Box, Divider, Grid, IconButton, Typography } from "@mui/material";
 import { logo } from "assets";
 import { useNavigate } from "react-router-dom";
 
+interface propTypes {
+  title: string;
+  desc: string;
+  duration: string;
+  extraInfo: string;
+}
+
 const OrComponent = () => {
   return (
     <Box mt={3}>
@@ -63,6 +70,27 @@ export const HeaderIcons = ({ icon, name, isActive, path }: any) => {
       >
         {name}
       </Typography>
+    </Box>
+  );
+};
+
+export const LogoDescDetails = ({
+  title,
+  desc,
+  duration,
+  extraInfo,
+}: propTypes) => {
+  return (
+    <Box display="flex">
+      <Box>
+        <img src={logo} alt="" width={35} height={35} />
+      </Box>
+      <Box ml={2}>
+        <Typography variant="subtitle2">{title}</Typography>
+        <Typography variant="body1">{desc}</Typography>
+        <Typography variant="body2">{duration}</Typography>
+        <Typography variant="body2">{extraInfo}</Typography>
+      </Box>
     </Box>
   );
 };
