@@ -1,6 +1,8 @@
 import { Box, Divider, Grid, IconButton, Typography } from "@mui/material";
 import { logo } from "assets";
 import { useNavigate } from "react-router-dom";
+import { StyledFlexCenterAll } from "styles";
+import { JsxElement } from "typescript";
 
 interface propTypes {
   title: string;
@@ -9,6 +11,10 @@ interface propTypes {
   extraInfo: string;
 }
 
+interface liceCommentType {
+  title: string;
+  icon: any;
+}
 const OrComponent = () => {
   return (
     <Box mt={3}>
@@ -92,5 +98,18 @@ export const LogoDescDetails = ({
         <Typography variant="body2">{extraInfo}</Typography>
       </Box>
     </Box>
+  );
+};
+
+export const LikeCommentCard = ({ icon, title }: liceCommentType) => {
+  return (
+    <Grid item xs={3}>
+      <StyledFlexCenterAll>
+        {icon}
+        <Typography variant="body1" sx={{ opacity: 0.8, ml: 0.3 }}>
+          {title}
+        </Typography>
+      </StyledFlexCenterAll>
+    </Grid>
   );
 };

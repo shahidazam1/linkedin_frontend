@@ -30,8 +30,25 @@ export const StyledFlex = styled(Box)(() => ({
   alignItems: "center",
 }));
 
-export const StyledHeader4 = styled(Box)(() => ({}));
-export const StyledHeader5 = styled(Box)(() => ({}));
+export const StyledFlexCenterAll = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+}));
+
+export const StyledAddPost = styled(Box)(() => ({
+  border: "1px solid #DCDCDC",
+  backgroundColor: "#E0E0E0",
+  borderRadius: "15px",
+  padding: 15,
+  opacity: 0.5,
+  width: "100%",
+}));
+
+export const StyledFlexCenter = styled(Box)(() => ({
+  display: "flex",
+  alignItems: "center",
+}));
 export const StyledHeader6 = styled(Box)(() => ({}));
 export const StyledHeader7 = styled(Box)(() => ({}));
 export const StyledHeader8 = styled(Box)(() => ({}));
