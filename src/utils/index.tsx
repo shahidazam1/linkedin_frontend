@@ -31,3 +31,11 @@ export const headerIconData = [
     path: "/notifications",
   },
 ];
+
+export const experienceType = [
+  "Trainee",
+  "Internship",
+  "Part-Time",
+  "Full-Time",
+  "self-Employeed",
+];

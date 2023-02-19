@@ -1,12 +1,24 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Grid } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import { logo, shahid } from "assets";
-import SimapleButton from "components/SimapleButton";
-import { StyledCardWraper } from "styles";
-import EditIcon from "components/EditIcon";
 import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import { UpdateProfile } from "api/services/profile";
+import { logo, shahid } from "assets";
+import { handleError } from "components/BasicComponents";
+import DialogWrapper from "components/DialogWrapper";
+import EditIcon from "components/EditIcon";
+import FormInput from "components/FormFields/FormInput";
+import LoadingButton from "components/LoadingButton";
+import SimapleButton from "components/SimapleButton";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "react-query";
+import { toast } from "react-toastify";
+import { StyledCardWraper } from "styles";
+import { HeadlineDefaultValues, HeadlineSchema } from "validations/profile";
 
 const HeadlineDetails = ({ profileData }: any) => {
+  const [open, setOpen] = useState(false);
   return (
     <StyledCardWraper>
       <Box>
@@ -31,7 +43,7 @@ const HeadlineDetails = ({ profileData }: any) => {
             }}
           />
         </Box>
-        <EditIcon handleClickEdit={""} />
+        <EditIcon handleClickEdit={() => setOpen(true)} />
         <Grid mt={3} container spacing={2}>
           <Grid item xs={7}>
             <Box>
@@ -61,8 +73,68 @@ const HeadlineDetails = ({ profileData }: any) => {
           </Grid>
         </Grid>
       </Box>
+      <HeadlineDialog open={open} setOpen={setOpen} profileData={profileData} />
     </StyledCardWraper>
   );
 };
 
 export default HeadlineDetails;
+
+const HeadlineDialog = ({ open, setOpen, profileData }: any) => {
+  const queryClient = useQueryClient();
+
+  const { control, handleSubmit, reset } = useForm({
+    defaultValues: HeadlineDefaultValues,
+    mode: "onChange",
+    resolver: yupResolver(HeadlineSchema),
+  });
+
+  useEffect(() => {
+    reset({
+      firstName: profileData?.firstName,
+      lastName: profileData?.lastName,
+      city: profileData?.city,
+      headline: profileData?.headline,
+    });
+  }, [profileData]);
+
+  const { mutate, isLoading } = useMutation(UpdateProfile, {
+    onSuccess: (res: any) => {
+      queryClient.invalidateQueries("profile");
+      toast.success("Profile Updated");
+      setOpen(false);
+    },
+    onError: (err: any) => handleError(err),
+  });
+
+  const onFormSubmit = (data: any) => {
+    mutate({
+      data: { ...data, about: profileData?.about },
+      id: profileData?._id,
+    });
+  };
+
+  return (
+    <DialogWrapper title="Edit" open={open} setOpen={setOpen}>
+      <form onSubmit={handleSubmit(onFormSubmit)}>
+        <Box sx={{ height: "200px", overflow: "scroll" }}>
+          <Box mt={2}>
+            <FormInput control={control} name="firstName" label="First Name" />
+          </Box>
+          <Box mt={2}>
+            <FormInput control={control} name="lastName" label="Last Name" />
+          </Box>
+          <Box mt={2}>
+            <FormInput control={control} name="city" label="Address" />
+          </Box>
+          <Box mt={2}>
+            <FormInput control={control} name="headline" label="Headline" />
+          </Box>
+        </Box>
+        <Box mt={3}>
+          <LoadingButton loading={isLoading} type="submit" title="Save" />
+        </Box>
+      </form>
+    </DialogWrapper>
+  );
+};

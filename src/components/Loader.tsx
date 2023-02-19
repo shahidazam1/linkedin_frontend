@@ -1,6 +1,7 @@
+import { Box } from "@mui/material";
 import "./Loader.css";
 const Loader = () => {
-  return <span className="loader"></span>;
+  return <Box className="loader"></Box>;
 };
 
 export default Loader;

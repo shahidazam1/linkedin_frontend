@@ -2,14 +2,16 @@ import { Box, Divider, Grid, IconButton, Typography } from "@mui/material";
 import { logo } from "assets";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { StyledFlexCenterAll } from "styles";
+import { StyledFlex, StyledFlexCenterAll } from "styles";
 import { JsxElement } from "typescript";
+import EditIcon from "./EditIcon";
 
 interface propTypes {
   title: string;
   desc: string;
   duration: string;
-  extraInfo: string;
+  extraInfo?: string;
+  handleClickEdit?: any;
 }
 
 interface liceCommentType {
@@ -86,19 +88,25 @@ export const LogoDescDetails = ({
   desc,
   duration,
   extraInfo,
+  handleClickEdit,
 }: propTypes) => {
   return (
-    <Box display="flex">
-      <Box>
-        <img src={logo} alt="" width={35} height={35} />
+    <StyledFlex>
+      <Box display="flex">
+        <Box>
+          <img src={logo} alt="" width={35} height={35} />
+        </Box>
+        <Box ml={2}>
+          <Typography variant="subtitle2">{title}</Typography>
+          <Typography variant="body1">{desc}</Typography>
+          <Typography variant="body2">{duration}</Typography>
+          <Typography variant="body2">{extraInfo}</Typography>
+        </Box>
       </Box>
-      <Box ml={2}>
-        <Typography variant="subtitle2">{title}</Typography>
-        <Typography variant="body1">{desc}</Typography>
-        <Typography variant="body2">{duration}</Typography>
-        <Typography variant="body2">{extraInfo}</Typography>
+      <Box alignSelf="flex-start">
+        <EditIcon handleClickEdit={handleClickEdit} />
       </Box>
-    </Box>
+    </StyledFlex>
   );
 };
 

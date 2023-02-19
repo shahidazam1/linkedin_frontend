@@ -17,6 +17,11 @@ body {
   src: url(../assets/fonts/Poppins-Bold.ttf);
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+  height: 7px;
+}
+
 /* MENTIONS */
 /* .mentions_input {
   font-family: Source Sans Pro !important;

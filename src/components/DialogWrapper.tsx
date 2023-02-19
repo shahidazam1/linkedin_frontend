@@ -1,4 +1,5 @@
-import { Box, Button, Dialog, Typography } from "@mui/material";
+import { Box, Button, Dialog, IconButton, Typography } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface IDrawerWrapperProps {
   open: boolean;
@@ -28,15 +29,13 @@ function DialogWrapper(props: IDrawerWrapperProps) {
           alignItems: "center",
         }}
       >
-        <Typography variant="h6" fontSize="18px">
+        <Typography variant="body1" fontSize="18px">
           {title}
         </Typography>
-        <Button
-          onClick={() => setOpen(false)}
-          sx={{ color: "black", opacity: "0.5" }}
-        >
-          Cancel
-        </Button>
+
+        <IconButton onClick={() => setOpen(false)}>
+          <CloseIcon />
+        </IconButton>
       </Box>
       <Box p={2}>{children}</Box>
     </Dialog>

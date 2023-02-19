@@ -23,7 +23,8 @@ const Signin = () => {
   const { mutate, isLoading } = useMutation(signin, {
     onSuccess: (res: any) => {
       localStorage.setItem("token", res.data.token);
-      window.location.href = "/";
+      alert("hello");
+      window.location.href = "/feed";
     },
     onError: (err: any) => handleError(err),
   });
