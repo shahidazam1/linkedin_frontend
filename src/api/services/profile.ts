@@ -12,6 +12,10 @@ const createExperience = (data: any) => {
   return http.post("/experience", data);
 };
 
+const createSkill = (data: any) => {
+  return http.post("/skills", data);
+};
+
 const UpdateProfile = ({ id, data }: any) => {
   return http.patch(`/profile/${id}`, data);
 };
@@ -22,6 +26,10 @@ const UpdateEducation = ({ id, data }: any) => {
 
 const UpdateExperience = ({ id, data }: any) => {
   return http.patch(`/experience/${id}`, data);
+};
+
+const UpdateSkill = ({ id, data }: any) => {
+  return http.patch(`/skills/${id}`, data);
 };
 
 const getMyProfile = () => {
@@ -36,7 +44,14 @@ const getOneEducation = ({ queryKey }: any) => {
   return http.get(`/education/${queryKey[1]}`);
 };
 
+const getOneSkill = ({ queryKey }: any) => {
+  return http.get(`/skills/${queryKey[1]}`);
+};
+
 export {
+  createSkill,
+  UpdateSkill,
+  getOneSkill,
   getMyProfile,
   createProfile,
   UpdateProfile,

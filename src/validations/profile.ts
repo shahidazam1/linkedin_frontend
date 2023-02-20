@@ -52,7 +52,17 @@ let EduSchema = object().shape({
   endDate: string().required(),
 });
 
+let SkillDefaultValues = {
+  skill: "",
+};
+
+let SkillSchema = object().shape({
+  skill: string().required(),
+});
+
 export {
+  SkillDefaultValues,
+  SkillSchema,
   EduDefaultValues,
   EduSchema,
   HeadlineDefaultValues,
