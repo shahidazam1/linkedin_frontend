@@ -7,13 +7,6 @@ let HeadlineDefaultValues = {
   headline: "",
 };
 
-let HeadlineSchema = object().shape({
-  firstName: string().required(),
-  lastName: string().notRequired(),
-  city: string().notRequired(),
-  headline: string().notRequired(),
-});
-
 let ExperienceDefaultValues = {
   title: "",
   type: "",
@@ -23,6 +16,26 @@ let ExperienceDefaultValues = {
   endDate: "",
   industry: "",
 };
+
+let EduDefaultValues = {
+  school: "",
+  degree: "",
+  field: "",
+  grade: "",
+  startDate: "",
+  endDate: "",
+};
+
+let SkillDefaultValues = {
+  skill: "",
+};
+
+let HeadlineSchema = object().shape({
+  firstName: string().required(),
+  lastName: string().notRequired(),
+  city: string().notRequired(),
+  headline: string().notRequired(),
+});
 
 let ExperienceSchema = object().shape({
   title: string().required(),
@@ -34,15 +47,6 @@ let ExperienceSchema = object().shape({
   industry: string().notRequired(),
 });
 
-let EduDefaultValues = {
-  school: "",
-  degree: "",
-  field: "",
-  grade: "",
-  startDate: "",
-  endDate: "",
-};
-
 let EduSchema = object().shape({
   school: string().required(),
   degree: string().required(),
@@ -51,10 +55,6 @@ let EduSchema = object().shape({
   startDate: string().required(),
   endDate: string().required(),
 });
-
-let SkillDefaultValues = {
-  skill: "",
-};
 
 let SkillSchema = object().shape({
   skill: string().required(),

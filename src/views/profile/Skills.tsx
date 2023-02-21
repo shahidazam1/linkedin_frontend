@@ -1,30 +1,19 @@
-import { StyledCardWraper, StyledFlex } from "styles";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Divider, Typography } from "@mui/material";
+import { createSkill, getOneSkill, UpdateSkill } from "api/services/profile";
 import AddIcon from "components/AddIcon";
 import { handleError } from "components/BasicComponents";
 import DialogWrapper from "components/DialogWrapper";
 import EditIcon from "components/EditIcon";
 import FormInput from "components/FormFields/FormInput";
+import Loader from "components/Loader";
 import LoadingButton from "components/LoadingButton";
-import SimapleButton from "components/SimapleButton";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
-import {
-  HeadlineDefaultValues,
-  HeadlineSchema,
-  SkillDefaultValues,
-  SkillSchema,
-} from "validations/profile";
-import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  createSkill,
-  getOneSkill,
-  UpdateProfile,
-  UpdateSkill,
-} from "api/services/profile";
-import Loader from "components/Loader";
+import { StyledCardWraper, StyledFlex } from "styles";
+import { SkillDefaultValues, SkillSchema } from "validations/profile";
 
 const Skills = ({ profileData }: any) => {
   const [open, setOpen] = useState(false);
@@ -65,7 +54,7 @@ export default Skills;
 const SkillDialog = ({ open, setOpen }: any) => {
   const queryClient = useQueryClient();
 
-  const { control, handleSubmit, reset } = useForm({
+  const { control, handleSubmit } = useForm({
     defaultValues: SkillDefaultValues,
     mode: "onChange",
     resolver: yupResolver(SkillSchema),
@@ -110,8 +99,6 @@ const EditSkillDialog = ({ open, setOpen, id }: any) => {
   });
 
   const { data, isLoading: expLoading } = useQuery(["skill", id], getOneSkill);
-
-  console.log(data?.data);
 
   useEffect(() => {
     reset({ ...data?.data });
