@@ -19,7 +19,7 @@ export const StyledAvatar = styled(Box)(() => ({
 export const StyledCardWraper = styled(Box)(() => ({
   backgroundColor: "white",
   borderRadius: "10px",
-  border: "1px solid #DCDCDC	",
+  border: "1px solid #DCDCDC",
   padding: 20,
   marginTop: 20,
 }));

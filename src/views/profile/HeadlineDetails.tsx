@@ -13,11 +13,13 @@ import SimapleButton from "components/SimapleButton";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { StyledCardWraper } from "styles";
 import { HeadlineDefaultValues, HeadlineSchema } from "validations/profile";
 
 const HeadlineDetails = ({ profileData }: any) => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   return (
     <StyledCardWraper>
@@ -52,23 +54,30 @@ const HeadlineDetails = ({ profileData }: any) => {
               </Typography>
               <Typography variant="body1">{profileData?.headline}</Typography>
               <Typography variant="body2">{profileData?.city}</Typography>
-              <SimapleButton title="123 Connections" handleClick={"none"} />
+              <SimapleButton
+                title="123 Connections"
+                handleClick={() => navigate("/connections")}
+              />
             </Box>
           </Grid>
           <Grid item xs={5}>
             <Box>
-              <Box display="flex">
-                <img src={logo} alt="image" width={35} height={35} />
-                <Typography ml={1} variant="subtitle2">
-                  {profileData?.experience[0]?.companyName ?? ""}
-                </Typography>
-              </Box>
-              <Box mt={1} display="flex">
-                <img src={logo} alt="image" width={35} height={35} />
-                <Typography ml={1} variant="subtitle2">
-                  {profileData?.education[0]?.school ?? ""}
-                </Typography>
-              </Box>
+              {profileData?.experience[0]?.companyName && (
+                <Box display="flex">
+                  <img src={logo} alt="image" width={35} height={35} />
+                  <Typography ml={1} variant="subtitle2">
+                    {profileData?.experience[0]?.companyName ?? ""}
+                  </Typography>
+                </Box>
+              )}
+              {profileData?.education[0]?.school && (
+                <Box mt={1} display="flex">
+                  <img src={logo} alt="image" width={35} height={35} />
+                  <Typography ml={1} variant="subtitle2">
+                    {profileData?.education[0]?.school ?? ""}
+                  </Typography>
+                </Box>
+              )}
             </Box>
           </Grid>
         </Grid>

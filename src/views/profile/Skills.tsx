@@ -44,7 +44,7 @@ const Skills = ({ profileData }: any) => {
         ))}
       </Box>
       <SkillDialog open={open} setOpen={setOpen} />
-      <EditSkillDialog open={openEdit} setOpen={setOpenEdit} id={id} />
+      <EditSkillDialog openEdit={openEdit} setOpenEdit={setOpenEdit} id={id} />
     </StyledCardWraper>
   );
 };
@@ -89,7 +89,7 @@ const SkillDialog = ({ open, setOpen }: any) => {
   );
 };
 
-const EditSkillDialog = ({ open, setOpen, id }: any) => {
+const EditSkillDialog = ({ openEdit, setOpenEdit, id }: any) => {
   const queryClient = useQueryClient();
 
   const { control, handleSubmit, reset } = useForm({
@@ -98,7 +98,9 @@ const EditSkillDialog = ({ open, setOpen, id }: any) => {
     resolver: yupResolver(SkillSchema),
   });
 
-  const { data, isLoading: expLoading } = useQuery(["skill", id], getOneSkill);
+  const { data, isLoading: expLoading } = useQuery(["skill", id], getOneSkill, {
+    enabled: !!id,
+  });
 
   useEffect(() => {
     reset({ ...data?.data });
@@ -108,7 +110,7 @@ const EditSkillDialog = ({ open, setOpen, id }: any) => {
     onSuccess: (res: any) => {
       queryClient.invalidateQueries("profile");
       toast.success("Skill Updated");
-      setOpen(false);
+      setOpenEdit(false);
     },
     onError: (err: any) => handleError(err),
   });
@@ -124,7 +126,7 @@ const EditSkillDialog = ({ open, setOpen, id }: any) => {
   if (expLoading) return <Loader />;
 
   return (
-    <DialogWrapper title="Skills" open={open} setOpen={setOpen}>
+    <DialogWrapper title="Skills" open={openEdit} setOpen={setOpenEdit}>
       <form onSubmit={handleSubmit(onFormSubmit)}>
         <Box sx={{ height: "200px", overflow: "scroll" }}>
           <Box mt={1}>

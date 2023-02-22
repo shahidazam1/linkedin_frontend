@@ -101,7 +101,7 @@ const HomeFeed = () => {
           </Typography>
           <Box>
             {/* <video src="./video.mp4" style={{ width: "100%" }} /> */}
-            <video controls autoPlay loop style={{ width: "100%" }}>
+            <video controls loop style={{ width: "100%" }}>
               <source src="./video.mp4" type="video/mp4" />
             </video>
           </Box>
