@@ -1,11 +1,12 @@
-import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
-import { shahid } from "assets";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
-import { useMutation, useQueries, useQuery, useQueryClient } from "react-query";
+import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
 import { addConnection, getAllPeople } from "api/services/connections";
-import SimpleLoader from "components/SimpleLoader";
-import { toast } from "react-toastify";
+import { shahid } from "assets";
 import { handleError } from "components/BasicComponents";
+import SimpleLoader from "components/SimpleLoader";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { toast } from "react-toastify";
 
 const ConnectionSuggestions = () => {
   const queryClient = useQueryClient();
@@ -14,8 +15,8 @@ const ConnectionSuggestions = () => {
 
   const { mutate, isLoading: connectLoading } = useMutation(addConnection, {
     onSuccess: (res: any) => {
-      queryClient.invalidateQueries("profile");
-      toast.success("Invitation Sent");
+      queryClient.invalidateQueries("findPeople");
+      toast.success(res?.data?.message);
     },
     onError: (err: any) => handleError(err),
   });
@@ -24,6 +25,13 @@ const ConnectionSuggestions = () => {
     mutate({
       connectionProfileId: id,
       status: "Pending",
+    });
+  };
+
+  const handleClickPending = (id: any) => {
+    mutate({
+      connectionProfileId: id,
+      status: "Rejected",
     });
   };
 
@@ -38,6 +46,8 @@ const ConnectionSuggestions = () => {
               city={item?.city}
               headline={item?.headline}
               handleClickConnect={() => handleClickConnect(item?._id)}
+              handleClickPending={() => handleClickPending(item?._id)}
+              status={item?.connection?.status}
               connectLoading={connectLoading}
             />
           </Grid>
@@ -54,6 +64,8 @@ interface Types {
   city: string;
   headline: string;
   handleClickConnect: any;
+  handleClickPending: any;
+  status: "Accepted" | "Rejected" | "Pending";
   connectLoading: Boolean;
 }
 
@@ -62,6 +74,8 @@ const SuggesstionsCard = ({
   headline,
   city,
   handleClickConnect,
+  handleClickPending,
+  status,
   connectLoading = false,
 }: Types) => {
   return (
@@ -87,15 +101,29 @@ const SuggesstionsCard = ({
           {city}
         </Typography>
         <Box mt={2}>
-          <Button
-            variant="outlined"
-            color="primary"
-            fullWidth
-            startIcon={<PersonAddAlt1Icon fontSize="small" />}
-            onClick={handleClickConnect}
-          >
-            Connect
-          </Button>
+          {!status ? (
+            <Button
+              variant="outlined"
+              color="primary"
+              fullWidth
+              startIcon={<PersonAddAlt1Icon fontSize="small" />}
+              onClick={handleClickConnect}
+            >
+              Connect
+            </Button>
+          ) : status === "Pending" ? (
+            <Button
+              variant="outlined"
+              color="secondary"
+              fullWidth
+              startIcon={<AccessTimeIcon fontSize="small" />}
+              onClick={handleClickPending}
+            >
+              Pending
+            </Button>
+          ) : (
+            ""
+          )}
         </Box>
       </Box>
     </Box>

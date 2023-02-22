@@ -1,9 +1,12 @@
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Grid, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { StyledFlex } from "styles";
 import ConnectionSuggestions from "views/myNetwork/ConnectionSuggestions";
 
 const MyNetwork = () => {
+  const navigate = useNavigate();
+
   return (
     <Box>
       <Grid container spacing={2}>
@@ -13,7 +16,10 @@ const MyNetwork = () => {
             <Typography variant="subtitle2">Manage Your Network</Typography>
             <ArrowForwardIcon color="secondary" />
           </StyledFlex>
-          <StyledFlex sx={{ p: 1, mt: 1, background: "white" }}>
+          <StyledFlex
+            sx={{ p: 2, mt: 1, background: "white", borderRadius: "10px" }}
+            onClick={() => navigate("invitations")}
+          >
             <Typography variant="subtitle2">Invitations</Typography>
             <ArrowForwardIcon color="secondary" />
           </StyledFlex>

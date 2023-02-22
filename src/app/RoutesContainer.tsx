@@ -8,6 +8,7 @@ import loadable from "@loadable/component";
 
 const Feed = loadable(() => import("pages/feed"));
 const MyNetwork = loadable(() => import("pages/my-network"));
+const Invitations = loadable(() => import("pages/my-network/invitations"));
 const Jobs = loadable(() => import("pages/jobs"));
 const Messaging = loadable(() => import("pages/messaging"));
 const Notifications = loadable(() => import("pages/notifications"));
@@ -25,6 +26,7 @@ const RoutesContainer = () => {
           <Route index element={<Navigate to="feed" />} />
           <Route path="feed" element={<Feed />} />
           <Route path="my-network" element={<MyNetwork />} />
+          <Route path="my-network/invitations" element={<Invitations />} />
           <Route path="jobs" element={<Jobs />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="messaging" element={<Messaging />} />
