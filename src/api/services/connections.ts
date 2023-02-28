@@ -12,4 +12,8 @@ const getAllPeople = () => {
   return http.get("connections");
 };
 
-export { addConnection, getAllPeople };
+const getAllInvitations = () => {
+  return http.get("/connections/invitations");
+};
+
+export { addConnection, getAllPeople, getAllInvitations };

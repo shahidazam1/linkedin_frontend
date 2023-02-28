@@ -22,8 +22,8 @@ const InvitationView = ({
       <Box display="flex">
         <Avatar src={shahid} alt="shahid" />
         <Box ml={2}>
-          <Typography variant="subtitle2">Shahid Azam</Typography>
-          <Typography variant="body2">web Developer</Typography>
+          <Typography variant="subtitle2">{name}</Typography>
+          <Typography variant="body2">{headline}</Typography>
         </Box>
       </Box>
       <Box display="flex">
