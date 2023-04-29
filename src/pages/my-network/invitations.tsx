@@ -6,10 +6,10 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 import InvitationView from "views/myNetwork/Invitations";
 
-const invitations = () => {
+const Invitations = () => {
   const queryClient = useQueryClient();
 
-  const { data, isLoading } = useQuery("invitations", getAllInvitations);
+  const { data, isLoading } = useQuery("invitation", getAllInvitations);
 
   const { mutate, isLoading: connectLoading } = useMutation(addConnection, {
     onSuccess: (res: any) => {
@@ -51,4 +51,4 @@ const invitations = () => {
   );
 };
 
-export default invitations;
+export default Invitations;
